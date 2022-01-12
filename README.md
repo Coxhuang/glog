@@ -1,10 +1,23 @@
-[![Build Status](https://img.shields.io/travis/google/glog/master.svg?label=Travis)](https://travis-ci.org/google/glog/builds)
-[![Grunt status](https://img.shields.io/appveyor/ci/google-admin/glog/master.svg?label=Appveyor)](https://ci.appveyor.com/project/google-admin/glog/history)
+# Trunk glog
 
-This repository contains a C++ implementation of the Google logging
-module.  Documentation for the implementation is in doc/.
-
-See INSTALL for (generic) installation instructions for C++: basically
-```sh
-./autogen.sh && ./configure && make && make install
+```shell
+cmake -DCMAKE_INSTALL_PREFIX=/opt/trunk -DBUILD_SHARED_LIBS=ON ..
+make package -j4
 ```
+
+> 推荐使用 `pkg_check_modules`
+
+```shell
+pkg_check_modules(Glog REQUIRED libglog)
+message(${Glog_INCLUDE_DIRS})
+message(${Glog_LIBRARY_DIRS})
+message(${Glog_LIBRARIES})
+```
+
+```shell
+find_package(glog REQUIRED)
+message(${Glog_INCLUDE_DIRS})
+message(${Glog_LIBRARY_DIRS})
+message(${Glog_LIBRARIES})
+```
+
